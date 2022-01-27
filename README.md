@@ -10,29 +10,62 @@ The solver works by starting with a word list and then applying list comprehensi
 
 ## Requirements
 
-You need Python (2 is fine) and a dictionary file such as the one usually found at `/usr/share/dict/words`.
+You need Python 3 (only because I use f-strings) and a dictionary file such as the one usually found at `/usr/share/dict/words`.
 
 ## Usage
 
-```shell
-wordle-solver % python suggest_words.py -h
+```
 usage: suggest_words.py [-h] [-d DICTIONARY] [-p PRESENT] [-n NOT_PRESENT] [-r PATTERN]
+                        [-i] [--no-interactive]
 
 Suggest solutions to Wordle based on some constraints.
 
 optional arguments:
   -h, --help            show this help message and exit
   -d DICTIONARY, --dictionary DICTIONARY
-                        Dictionary file to use as the starting point. Default is '/usr/share/dict/words'.
+                        Dictionary file to use as the starting point. Default is
+                        '/usr/share/dict/words'.
   -p PRESENT, --present PRESENT
-                        All letters that we know are in the word, all in one string. Default is '' (emtpy string).
+                        All letters that we know are in the word, all in one string.
+                        Default is '' (emtpy string).
   -n NOT_PRESENT, --not-present NOT_PRESENT
-                        All letters that we know are not in the word, all in one string. Default is '' (emtpy string).
+                        All letters that we know are not in the word, all in one
+                        string. Default is '' (emtpy string).
   -r PATTERN, --pattern PATTERN
                         Regex pattern we know the word must match. Default is '.....'.
+  -i, --interactive     Run in interactive mode.
+  --no-interactive      Run in non-interactive mode (default).
 ```
 
-## Example
+## Example (interactive mode)
+
+In interactive mode, you're prompted to enter the word you tried in Wordle, and then the answer that Wordle gave you.
+Based on these inputs, the wordle solver will define the constraints and suggest a list of matching words.
+This goes on until you enter `+++++` as Wordle's answer.
+
+```
+$ python suggest_words.py --interactive
+running in interactive mode
+Enter Wordle's answer as follows:
+- '+' for: letter is in word and in correct spot (green)
+- '?' for: letter is in word but not in correct spot (yellow)
+- '-' for: letter is not in word (grey)
+What is your word?        noise
+What is Wordle's answer?  ?+---
+May I suggest the following options:
+['bogan', 'Bonbo', 'Bongo', 'bongo', 'Bonny', 'bonny', 'boonk', 'Boran', 'boron', 'bound', 'bourn', 'codon', 'cogon', 'Colan', 'colon', 'Coman', 'conal', 'conch', 'conga', 'Congo', 'conky', 'Conor', 'Conoy', 'conto', 'coony', 'cornu', 'corny', 'count', 'Cowan', 'coyan', 'Donal', 'Donar', 'donax', 'donga', 'Donna', 'donna', 'donor', 'donum', 'downy', 'fogon', 'fondu', 'fonly', 'found', 'fount', 'goban', 'gonad', 'gonal', 'goran', 'gowan', 'hogan', 'Hokan', 'honda', 'hondo', 'honor', 'Honzo', 'horny', 'hound', 'Iowan', 'Johan', 'Jonah', 'koban', 'kokan', 'konak', 'Kongo', 'kongu', 'Koran', 'koyan', 'lohan', 'longa', 'loony', 'loran', 'lowan', 'monad', 'monal', 'Mongo', 'monny', 'month', 'Montu', 'Monty', 'moony', 'moorn', 'Mopan', 'Moran', 'moron', 'mound', 'mount', 'mourn', 'Norna', 'pohna', 'Pokan', 'Ponca', 'Pondo', 'pondy', 'ponga', 'Pongo', 'ponja', 'ponto', 'pound', 'rogan', 'rohan', 'rohun', 'Roman', 'ronco', 'rondo', 'Ronga', 'rotan', 'round', 'rowan', 'Solon', 'Songo', 'Sonja', 'Sonny', 'tolan', 'toman', 'tonal', 'Tonga', 'tonga', 'Tonna', 'Tonto', 'Toona', 'toran', 'tourn', 'towan', 'towny', 'toxon', 'toyon', 'woman', 'wonga', 'wonky', 'wonna', 'wound', 'xoana', 'yojan', 'young', 'yourn', 'zogan', 'zonal', 'zonar', 'Zonta']
+What is your word?        month
+What is Wordle's answer?  ++??-
+May I suggest the following options:
+['mount']
+What is your word?        mount
+What is Wordle's answer?  +++++
+Congratulations!
+```
+
+## Example (non-interactive mode)
+
+In non-interactive mode, you need to pass all constraints as parameters.
 
 ### Attempt 1
 
