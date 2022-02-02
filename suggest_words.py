@@ -1,5 +1,6 @@
 import argparse
 import re
+import shutil
 import sys
 
 def get_candidates(words, present, not_present, pattern):
@@ -8,6 +9,22 @@ def get_candidates(words, present, not_present, pattern):
             not any([letter in word for letter in not_present]) and
             pattern.match(word)
             ]
+
+def chunks(lst, n):
+    """Yield successive n-sized chunks from lst."""
+    # https://stackoverflow.com/questions/312443/how-do-you-split-a-list-into-evenly-sized-chunks
+    for i in range(0, len(lst), n):
+        yield lst[i:i + n]
+
+def print_candidates(candidates):
+    width = shutil.get_terminal_size().columns
+    spacing_length = 2
+    word_length = 5
+    words_per_line = (width - word_length) // (word_length + spacing_length) + 1
+    lines = chunks(candidates, words_per_line)
+    spacing = " "*spacing_length
+    for line in lines:
+        print(spacing.join(line))
 
 parser = argparse.ArgumentParser(
     description="Suggest solutions to Wordle based on some constraints.")
@@ -101,10 +118,10 @@ if args.interactive:
 
         candidates = get_candidates(words, present, not_present, pattern)
         print("May I suggest the following options:")
-        print(candidates)
+        print_candidates(candidates)
 
     sys.exit(0)
 
 # filter words with all() and not any()
 candidates = get_candidates(words, present, not_present, pattern)
-print(candidates)
+print_candidates(candidates)
