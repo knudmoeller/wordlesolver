@@ -10,7 +10,7 @@ The solver works by starting with a word list and then applying list comprehensi
 
 ## Requirements
 
-You need Python 3 (only because I use f-strings) and a dictionary file such as the one usually found at `/usr/share/dict/words`.
+You need Python 3 and a dictionary file such as the one usually found at `/usr/share/dict/words`.
 
 ## Usage
 
@@ -53,11 +53,20 @@ Enter Wordle's answer as follows:
 What is your word?        noise
 What is Wordle's answer?  ?+---
 May I suggest the following options:
-['bogan', 'Bonbo', 'Bongo', 'bongo', 'Bonny', 'bonny', 'boonk', 'Boran', 'boron', 'bound', 'bourn', 'codon', 'cogon', 'Colan', 'colon', 'Coman', 'conal', 'conch', 'conga', 'Congo', 'conky', 'Conor', 'Conoy', 'conto', 'coony', 'cornu', 'corny', 'count', 'Cowan', 'coyan', 'Donal', 'Donar', 'donax', 'donga', 'Donna', 'donna', 'donor', 'donum', 'downy', 'fogon', 'fondu', 'fonly', 'found', 'fount', 'goban', 'gonad', 'gonal', 'goran', 'gowan', 'hogan', 'Hokan', 'honda', 'hondo', 'honor', 'Honzo', 'horny', 'hound', 'Iowan', 'Johan', 'Jonah', 'koban', 'kokan', 'konak', 'Kongo', 'kongu', 'Koran', 'koyan', 'lohan', 'longa', 'loony', 'loran', 'lowan', 'monad', 'monal', 'Mongo', 'monny', 'month', 'Montu', 'Monty', 'moony', 'moorn', 'Mopan', 'Moran', 'moron', 'mound', 'mount', 'mourn', 'Norna', 'pohna', 'Pokan', 'Ponca', 'Pondo', 'pondy', 'ponga', 'Pongo', 'ponja', 'ponto', 'pound', 'rogan', 'rohan', 'rohun', 'Roman', 'ronco', 'rondo', 'Ronga', 'rotan', 'round', 'rowan', 'Solon', 'Songo', 'Sonja', 'Sonny', 'tolan', 'toman', 'tonal', 'Tonga', 'tonga', 'Tonna', 'Tonto', 'Toona', 'toran', 'tourn', 'towan', 'towny', 'toxon', 'toyon', 'woman', 'wonga', 'wonky', 'wonna', 'wound', 'xoana', 'yojan', 'young', 'yourn', 'zogan', 'zonal', 'zonar', 'Zonta']
+bogan  Bonbo  Bongo  bongo  Bonny  bonny  boonk  Boran  boron  bound  bourn  codon  cogon  Colan
+colon  Coman  conal  conch  conga  Congo  conky  Conor  Conoy  conto  coony  cornu  corny  count
+Cowan  coyan  Donal  Donar  donax  donga  Donna  donna  donor  donum  downy  fogon  fondu  fonly
+found  fount  goban  gonad  gonal  goran  gowan  hogan  Hokan  honda  hondo  honor  Honzo  horny
+hound  Iowan  Johan  Jonah  koban  kokan  konak  Kongo  kongu  Koran  koyan  lohan  longa  loony
+loran  lowan  monad  monal  Mongo  monny  month  Montu  Monty  moony  moorn  Mopan  Moran  moron
+mound  mount  mourn  Norna  pohna  Pokan  Ponca  Pondo  pondy  ponga  Pongo  ponja  ponto  pound
+rogan  rohan  rohun  Roman  ronco  rondo  Ronga  rotan  round  rowan  Solon  Songo  Sonja  Sonny
+tolan  toman  tonal  Tonga  tonga  Tonna  Tonto  Toona  toran  tourn  towan  towny  toxon  toyon
+woman  wonga  wonky  wonna  wound  xoana  yojan  young  yourn  zogan  zonal  zonar  Zonta
 What is your word?        month
 What is Wordle's answer?  ++??-
 May I suggest the following options:
-['mount']
+mount
 What is your word?        mount
 What is Wordle's answer?  +++++
 Congratulations!
